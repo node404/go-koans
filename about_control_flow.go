@@ -1,13 +1,17 @@
 package go_koans
 
-import "fmt"
+import (
+	"math"
+
+	"fmt"
+)
 
 func aboutControlFlow() {
 	{
 		a, b, c := 1, 2, 3
-		assert(a == __int__) // multiple assignment
-		assert(b == __int__) // can make
-		assert(c == __int__) // life easier
+		assert(a == 1) // multiple assignment
+		assert(b == 2) // can make
+		assert(c == 3) // life easier
 	}
 
 	var str string
@@ -18,14 +22,14 @@ func aboutControlFlow() {
 		} else {
 			str = "baby dont hurt me"
 		}
-		assert(str == __string__) // no more
+		assert(str == "baby dont hurt me") // no more
 
 		if length := len(str); length == 17 {
 			str = "to be"
 		} else {
 			str = "or not"
 		}
-		assert(str == __string__) // that is the question
+		assert(str == "to be") // that is the question
 	}
 
 	{
@@ -39,7 +43,7 @@ func aboutControlFlow() {
 		case fmt.Sprintf("%s%s", hola1, hola2):
 			str = "senor"
 		}
-		assert(str == __string__) // cases can be of any type, even arbitrary expressions
+		assert(str == "hi") // cases can be of any type, even arbitrary expressions
 
 		switch {
 		case false:
@@ -47,7 +51,7 @@ func aboutControlFlow() {
 		case true:
 			str = "second"
 		}
-		assert(str == __string__) // in the absence of value, there is truth
+		assert(str == "second") // in the absence of value, there is truth
 	}
 
 	{
@@ -55,17 +59,25 @@ func aboutControlFlow() {
 		for i := 0; i < 5; i++ {
 			n += i
 		}
-		assert(n == __int__) // for can have the structure with which we are all familiar
+		assert(n == 10) // for can have the structure with which we are all familiar
 	}
 
 	{
 		n := 1
+		i := 1
 		for {
 			n *= 2
-			if n > 20 {
+			// if n > 20 {
+			// 	break
+			// }
+			i++
+			if i > 20 {
 				break
 			}
 		}
-		assert(n == __int__) // though omitting everything creates an infinite loop
+		// fmt.Println(n)
+		// fmt.Println(math.Pow(2, 20))
+		// assert(n == 32) // though omitting everything creates an infinite loop
+		assert(float64(n) == math.Pow(2, 20)) // though omitting everything creates an infinite loop
 	}
 }
